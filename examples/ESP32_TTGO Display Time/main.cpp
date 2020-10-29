@@ -26,8 +26,6 @@ improvements, issues on Github: https://github.com/rin67630/NaTLibESP
 
 #define OFFLINE // Remove to keep online
 
-#include <SPI.h>
-
 #if defined(ESP8266)
 #include <ESP8266WiFi.h>  // default from Espressif
 #include <WiFiUdp.h>      // default from Espressif  
@@ -100,11 +98,15 @@ void getNTP()
   now = time(nullptr);
   Epoch = now;
 }
+
+
 void getEpoch()
 {
   now = time(nullptr);
   Epoch = now;
 }
+
+
 void getTimeData()
 {
   timeinfo  = localtime(&now);  // cf: https://www.cplusplus.com/reference/ctime/localtime/
@@ -121,11 +123,13 @@ void getTimeData()
   strftime (Date,12, "%d/%m/%Y", timeinfo);
 }
 
+
 void disConnect()
 {
   //  WiFi.disconnect(); //temporarily disconnect WiFi as it's no longer needed
   WiFi.mode(WIFI_OFF);
 }
+
 
 void reConnect()
 {
@@ -137,6 +141,7 @@ void reConnect()
     //    Serial.print(".");
   }
 }
+
 
 void setup()
 {
@@ -153,6 +158,7 @@ void setup()
   Serial.println (F("Sketch is now running offline with own time"));
 #endif
 }
+
 
 void loop()
 {
